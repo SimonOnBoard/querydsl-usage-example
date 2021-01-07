@@ -1,0 +1,12 @@
+GET http://localhost:5556/products/search?producer=msb
+#should find only game car instance
+###
+
+GET http://localhost:5556/products/search?naming=on
+#should find only mobile phone instance
+###
+
+
+GET http://localhost:5556/products/search?minPrice=50000
+#should find the whole product instances in current database data
+###
