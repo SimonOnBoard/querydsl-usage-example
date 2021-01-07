@@ -17,6 +17,6 @@
 - https://github.com/SimonOnBoard/mongodb-full-hateoas  
 в этом репозитории все 3 способа взаимодействия разложены по разным package.  
 в package spring_jpa_hateoas  лежит hateoas приложение, в котором реализован RepresentationProcessor требуемый для 3 задания.  
-#7. QueryDSL in MongoDB
-https://github.com/SimonOnBoard/querydsl-usage-example
+#7. QueryDSL in MongoDB  
+- https://github.com/SimonOnBoard/querydsl-usage-example
 
