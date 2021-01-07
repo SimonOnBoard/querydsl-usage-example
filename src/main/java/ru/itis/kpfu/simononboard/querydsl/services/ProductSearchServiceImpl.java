@@ -1,6 +1,7 @@
 package ru.itis.kpfu.simononboard.querydsl.services;
 
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.itis.kpfu.simononboard.querydsl.dtos.ProductDto;
@@ -35,10 +36,9 @@ public class ProductSearchServiceImpl implements ProductSearchService {
         if (productSearchRequest.getMinPrice() != null) {
             booleanBuilder.or(product.minPrice.isNotNull().and(product.minPrice.goe(productSearchRequest.getMinPrice())));
         }
-//        if(productSearchRequest.getTags() != null){
-//            booleanBuilder.or(product.tags.contains(productSearchRequest.getTags()))
-//        }
-
+        if (productSearchRequest.getTags() != null) {
+            buildListPredicate(booleanBuilder, productSearchRequest.getTags());
+        }
 
         Predicate predicate = booleanBuilder.getValue();
         if (predicate != null) {
@@ -48,5 +48,16 @@ public class ProductSearchServiceImpl implements ProductSearchService {
         } else {
             return Collections.emptyList();
         }
+    }
+
+    private void buildListPredicate(BooleanBuilder booleanBuilder, List<String> tags) {
+        //только потому что это объект booleanExpression нельзя создать ни при помощи конструктора ни при побощи статического метода
+        BooleanExpression booleanExpression = product.tags.contains(tags.get(0));
+        if (tags.size() != 1) {
+            for (int i = 1; i < tags.size(); i++) {
+                booleanExpression = booleanExpression.and(product.tags.contains(tags.get(i)));
+            }
+        }
+        booleanBuilder.or(booleanExpression);
     }
 }

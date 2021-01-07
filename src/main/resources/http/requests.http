@@ -10,3 +10,15 @@ GET http://localhost:5556/products/search?naming=on
 GET http://localhost:5556/products/search?minPrice=50000
 #should find the whole product instances in current database data
 ###
+
+GET http://localhost:5556/products/search?tags=game&tags=car
+#should find only game car instance
+###
+
+GET http://localhost:5556/products/search?tags=phone&tags=car
+#should find nothing
+###
+
+GET http://localhost:5556/products/search?tags=mobile
+#should find mobile phone instance
+###
