@@ -8,7 +8,7 @@
 - https://github.com/SimonOnBoard/logs-document-consumer  
 #3. HATEOAS  
 - https://github.com/SimonOnBoard/mongodb-full-hateoas  
-- частичная реализация, отсутствует тестирование через api doc  
+- частичная реализация, отсутствует тестирование и создание документации через api doc  
 #4. Annotations  
 - https://github.com/SimonOnBoard/annotation-processing  
 #5. Создать свою БД для MongoDB  
